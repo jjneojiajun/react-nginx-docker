@@ -6,5 +6,4 @@ before_install:
   - docker build -t jjneojiajun/react-nginx-docker -f Dockerfile.dev .
 
 script:
-  - docker run jjneojiajun/react-nginx-docker npm run test -- --coverage
-  
+  - docker run -e CI=true jjneojiajun/react-nginx-docker npm run test
