@@ -7,3 +7,18 @@ before_install:
 
 script:
   - docker run -e CI=true jjneojiajun/react-nginx-docker npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react-nginx-docker"
+  env: "ReactNginxDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-511788195710"
+  bucket_path: "react-nginx-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+  
